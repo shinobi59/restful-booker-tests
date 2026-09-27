@@ -30,6 +30,7 @@ class ApiClient:
 
         logger.info(f'- {response.status_code}')
         return response
+
     def get(self, path, **kwargs):
         return self._request('GET', path, **kwargs)
 
