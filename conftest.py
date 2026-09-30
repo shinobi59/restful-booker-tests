@@ -1,7 +1,7 @@
 import pytest
 from api.client import ApiClient
 from api.auth import AuthApi
-
+from api.booking import BookingApi
 BASE_URL = "https://restful-booker.herokuapp.com"
 
 
@@ -22,3 +22,21 @@ def token(auth):
 @pytest.fixture(scope="session")
 def auth_headers(auth, token):
     return auth.get_headers(token)
+
+@pytest.fixture(scope="session")
+def booking(api, auth):
+    return BookingApi(api, auth)
+
+@pytest.fixture
+def booking_data():
+    return {
+        "firstname": "John",
+        "lastname": "Doe",
+        "totalprice": 150,
+        "depositpaid": True,
+        "bookingdates": {
+            "checkin": "2024-01-01",
+            "checkout": "2024-01-05",
+        },
+        "additionalneeds": "Breakfast",
+    }
