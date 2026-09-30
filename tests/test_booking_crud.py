@@ -2,7 +2,7 @@ import allure
 
 @allure.feature("Booking")
 @allure.title("Получение id бронирования")
-@allure.severity(allure.severity_level.CRITICAL)
+@allure.severity(allure.severity_level.NORMAL)
 def test_get_booking_id(booking):
     ids = booking.get_booking_ids()
     assert len(ids) > 0
@@ -10,7 +10,7 @@ def test_get_booking_id(booking):
 
 @allure.feature("Booking")
 @allure.title("Поиск бронирования по id")
-@allure.severity(allure.severity_level.CRITICAL)
+@allure.severity(allure.severity_level.NORMAL)
 def test_booking_by_id(booking):
     ids = booking.get_booking_ids()
     first_id = ids[0]["bookingid"]
@@ -21,7 +21,7 @@ def test_booking_by_id(booking):
 
 @allure.feature("Booking")
 @allure.title("Получение неизвестного id бронирования")
-@allure.severity(allure.severity_level.CRITICAL)
+@allure.severity(allure.severity_level.NORMAL)
 def test_get_unknown_booking(booking):
     response = booking.get_booking_response(9999999)
     assert response.status_code == 404
@@ -65,7 +65,7 @@ def test_full_crud_cycle(booking, booking_data, token):
 
 @allure.feature("Booking")
 @allure.title("Частичное обновление бронирования")
-@allure.severity(allure.severity_level.CRITICAL)
+@allure.severity(allure.severity_level.NORMAL)
 def test_patch_booking(booking, booking_data, token):
     created = booking.create_booking(booking_data)
     ids = created["bookingid"]
@@ -78,7 +78,7 @@ def test_patch_booking(booking, booking_data, token):
 
 @allure.feature("Booking")
 @allure.title("Создание бронирование без требуемых полей")
-@allure.severity(allure.severity_level.CRITICAL)
+@allure.severity(allure.severity_level.MINOR)
 def test_create_without_required_fields(booking, booking_data, token):
     invalid_data = {k: v for k, v in booking_data.items() if k != "firstname"}
 
