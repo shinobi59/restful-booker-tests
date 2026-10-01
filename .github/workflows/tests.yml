@@ -57,7 +57,7 @@ jobs:
           path: gh-pages
 
       - name: Generate Allure report
-        uses: simple-elf/allure-report-action@master
+        uses: simple-elf/allure-report-action@1.13.0
         with:
           allure_results: allure-results
           allure_history: allure-history
@@ -69,4 +69,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-          force_orphan: true     # ← добавь эту строку
+          force_orphan: true
